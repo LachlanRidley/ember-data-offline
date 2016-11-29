@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import Resolver from 'ember/resolver';
-import loadInitializers from 'ember/load-initializers';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
 import config from './config/environment';
 
-var App;
+let App;
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
@@ -12,10 +12,6 @@ App = Ember.Application.extend({
   podModulePrefix: config.podModulePrefix,
   Resolver: Resolver
 });
-
-//Shut up deprecations
-Ember.deprecate = function() { };
-Ember.warn = function() { };
 
 loadInitializers(App, config.modulePrefix);
 

@@ -23,7 +23,7 @@ module('Acceptance: CRUD Test', {
 });
 
 test('findAll', function(assert) {
-  assert.expect(7);
+  assert.expect(1);
 
   visit('/');
 

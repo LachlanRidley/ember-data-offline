@@ -8,6 +8,9 @@ import onlineMixin from 'ember-data-offline/mixins/online';
 import LFAdapter from 'ember-localforage-adapter/adapters/localforage';
 import LFSerializer from 'ember-localforage-adapter/serializers/localforage';
 import isObjectEmpty from 'ember-data-offline/utils/is-object-empty';
+
+const { getOwner } = Ember;
+
 /**
 A base adapter, that can be used as-is or extended if necessary.
 
@@ -26,7 +29,7 @@ export default DS.RESTAdapter.extend(onlineMixin, {
 
     let serializer = LFSerializer.extend({
       normalize(typeClass) {
-        let store = container.lookup('service:store');
+        let store = getOwner(this).lookup('service:store');
         let modelSerializer = store.serializerFor(typeClass.modelName);
         return modelSerializer.normalize.apply(modelSerializer, arguments);
       },
@@ -40,7 +43,6 @@ export default DS.RESTAdapter.extend(onlineMixin, {
           let serialized = modelSerializer.serialize(snapshot, options);
           json = Ember.merge(json, serialized);
         }
-        console.log(snapshot);
         if (snapshot.get('__data_offline_meta__')) {
           json['__data_offline_meta__'] = snapshot.get('__data_offline_meta__');
         }
