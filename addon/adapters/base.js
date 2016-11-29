@@ -25,7 +25,7 @@ export default DS.RESTAdapter.extend(onlineMixin, {
 
   initRunner: Ember.on('init', function() {
     let adapter = this;
-    let container = this.container;
+    let container = getOwner(this);
 
     let serializer = LFSerializer.extend({
       normalize(typeClass) {
