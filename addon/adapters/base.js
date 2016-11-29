@@ -40,6 +40,7 @@ export default DS.RESTAdapter.extend(onlineMixin, {
           let serialized = modelSerializer.serialize(snapshot, options);
           json = Ember.merge(json, serialized);
         }
+        console.log(snapshot);
         if (snapshot.get('__data_offline_meta__')) {
           json['__data_offline_meta__'] = snapshot.get('__data_offline_meta__');
         }
