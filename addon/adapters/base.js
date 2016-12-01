@@ -66,6 +66,9 @@ export default DS.RESTAdapter.extend(onlineMixin, {
 
       extractMeta: function(store, modelClass, payload) {
         //let meta = {};// = store.metadataFor(modelClass);
+        console.log(store);
+        console.log(modelClass);
+        console.log(payload);
         let meta = payload.get('meta');
 
         if (isObjectEmpty(meta)) {
