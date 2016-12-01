@@ -17,7 +17,7 @@ import { updateMeta } from 'ember-data-offline/utils/meta';
 var _persistArray = function(array, adapter, typeClass, withMeta) {
   let serializer = adapter.serializer;
   adapter.queue.attach((resolve, reject) => {
-    adapter._namespaceForType(typeClass).then(namespace => {
+    adapter._getNamespaceData(typeClass).then(namespace => {
       if (!Ember.isEmpty(array)) {
         for (var i = 0, len = array.length; i !== len; i++) {
           let snapshot = array[i]._createSnapshot();
