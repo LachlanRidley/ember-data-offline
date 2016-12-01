@@ -39,7 +39,7 @@ export default Ember.Mixin.create(baseMixin, {
   @returns metadata {Object}
   **/
   metadataForType(typeClass) {
-    return this._namespaceForType(typeClass).then(namespace => {
+    return this._getNamespaceData(typeClass).then(namespace => {
       return namespace["__data_offline_meta__"];
     });
   },
