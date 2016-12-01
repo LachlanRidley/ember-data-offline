@@ -1,7 +1,7 @@
 import Mirage, { faker } from 'ember-cli-mirage';
 
 export default Mirage.Factory.extend({
-  name: faker.address.city,
+  name: faker.address.city/*,
   office: function(i) {
     let office = {
       id: i + 1,
@@ -10,5 +10,5 @@ export default Mirage.Factory.extend({
       company: i + 1
     };
     return office;
-  }
+  }*/
 });

@@ -8,59 +8,22 @@ var genId = function() {
 };
 
 export default function() {
-  this.get('/users', function(db, req){
-    return {dummy_users: db.users};
-  });
-  this.get('/users/:id', function(db, req){
-    let user = db.users.find(req.params.id);
-    return {dummy_user: user};
-  });
-  this.post('/users', function(db, request) {
-    var attrs = JSON.parse(request.requestBody)['user'];
-    attrs._id = genId();
-    delete attrs.id;
-    // return new Mirage.Response(404, null, null); // Need this for testing
-    return {dummy_user: attrs};
-  });
-  this.put('/users/:id', function(db, request) {
-    var attrs = JSON.parse(request.requestBody)['user'];
-    // return new Mirage.Response(408, null, null); // Need this for testing
-    return {dummy_user: attrs};
-  });
-  this.put('/update_users', function(db, request) {
-    // var attrs = JSON.parse(request.requestBody)['user'];
-    return new Mirage.Response(408, null, null); // Need this for testing
-    // return {dummy_user: attrs};
-  });
+  this.get('/users');
+  this.get('/users/:id');
+  this.post('/users');
+  this.put('/users/:id');
+  this.put('/update_users');
   this.del('/users/:id', 'user');
 
-  this.get('/companies', function(db, req){
+  this.get('/companies');
 
-    if (req.queryParams.firstTwo) {
-      return {companies: db.companies.slice(0,2)};
-    }
-    return {companies: db.companies}; 
-  });
+  this.get('/cars');
 
-  this.get('/cars', function(db, req){
-    return {cars: db.cars}; 
-  });
+  this.get('/offices_for_company');
+  this.get('/offices_for_company/:id');
 
-  this.get('/offices_for_company', function(db, req){
-    return {offices: db.offices};
-  });
-  this.get('/offices_for_company/:id', function(db, req){
-    let office = db.offices.find(req.params.id);
-    return {offices: office};
-  });
-
-  this.get('/cities', function(db, req){
-    return {cities: db.cities};
-  });
-  this.get('/cities/:id', function(db, req){
-    let city = db.cities.find(req.params.id);
-    return {city: city};
-  });
+  this.get('/cities');
+  this.get('/cities/:id');
 
   this.pretender.get('/*passthrough', this.pretender.passthrough);
 }

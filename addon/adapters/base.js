@@ -80,7 +80,7 @@ export default DS.RESTAdapter.extend(onlineMixin, {
           meta['__data_offline_meta__'][payload[store.serializerFor(modelClass).primaryKey]] = payload['__data_offline_meta__'];
         }
 
-        return meta; // TODOO <-- this is the correct thing to return, do not change back
+        return meta; // TODO <-- this is the correct thing to return, do not change back
         //store.setMetadataFor(modelClass, meta);
       },
     }).create({
